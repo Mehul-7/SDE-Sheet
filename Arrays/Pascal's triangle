@@ -1,0 +1,29 @@
+<------------------------1st Variant : Print 'N' rows of Pascal's triangle--------------------------------->
+
+TC - O(N^2> ; SC - O(N^2>
+
+vector<vector<int>> generate(int numRows) {
+  vector<vector<int>> pascal(numRows);
+  int i=0;
+  while(i<numRows){
+    pascal[i].push_back(1);
+    for(int j=0; j<i-1; ++j){
+      pascal[i].push_back(pascal[i-1][j]+pascal[i-1][j+1]);
+    }
+    if(i!=0) pascal[i].push_back(1);
+    ++i;
+  }  
+  return pascal;
+}
+
+<------------------------1st Variant : Print (x,y)th term of Pascal's triangle--------------------------------->
+
+TC - O(N) ; SC - O(1)
+
+Formula for (x,y)th term of Pascal's triangle : (x-1)C(y-1) {O(N) time for calculating factorial)
+
+<------------------------1st Variant : Print Nth row of Pascal's triangle--------------------------------->
+
+TC - O(N) ; SC - O(N)
+
+Don't compute each term individually, compute next term from previous.
