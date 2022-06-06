@@ -16,13 +16,13 @@ vector<vector<int>> generate(int numRows) {
   return pascal;
 }
 
-<------------------------1st Variant : Print (x,y)th term of Pascal's triangle--------------------------------->
+<------------------------2nd Variant : Print (x,y)th term of Pascal's triangle--------------------------------->
 
 TC - O(N) ; SC - O(1)
 
 Formula for (x,y)th term of Pascal's triangle : (x-1)C(y-1) {O(N) time for calculating factorial)
 
-<------------------------1st Variant : Print Nth row of Pascal's triangle--------------------------------->
+<------------------------3rd Variant : Print Nth row of Pascal's triangle--------------------------------->
 
 TC - O(N) ; SC - O(N)
 
