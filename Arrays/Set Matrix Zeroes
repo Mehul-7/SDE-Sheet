@@ -42,6 +42,8 @@ SC -> O(1)
 //The we traverse in REVERSE order (to prevent any unwanted changes to our first row and column respectively)
 //BE CAREFUL WITH TTHE CONDITION STATEMENTS
 
+//Take flag only for either row or column (no need for both)<----------------------------Slight improvement----------------------------->Code not added
+
 #include <bits/stdc++.h> 
 void setZeros(vector<vector<int>> &matrix)
 {
