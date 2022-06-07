@@ -1,0 +1,37 @@
+<-----------------------------------MAX SUBARRAY SUM----------------------------------->
+
+BRUTE FORCE
+
+TC -> O(n^2);
+TC -> O(1)
+
+Basically use 2 for loops and calculate sum of each possible subarray and store the max sum.
+
+KADANE'S ALGORITHM
+
+TC -> O(N)
+SC -> O(1)
+
+INTUITION :
+The current subarray is extended to the next element only if current-subarray + element > element. Else we set current-subarray = element.
+
+ALGORITHM :
+Start from last element.
+Take 2 variables -> CURRENT_MAX=0 -> CURRENT MAXIMUM SUBARRAY SUM , CURRENT_SUB=0 -> CURRENT SUBARRAY SUM
+For the ith element : if (CURRENT_SUB > 0) -> CURENT_SUB += arr[i];
+                      else CURRENT_SUB=arr[i]
+CURRENT_MAX = max(CURRENT_MAX, CURRENT_SUB.
+
+CODE :
+
+long long maxSubArray(vector<int>& nums) {
+  int n=nums.size(), curr-max=0; curr_sum=0
+        
+  for(int i=n-1; i>=0; --i){
+    if(curr_sub>0) curr_sub += nums[i];
+    else curr_sub=nums[i];
+    curr_max=max(curr_max, curr_sub); // use ternary as max() fn. doesn't accept long long parameter
+  }
+        
+  return ans;
+}
