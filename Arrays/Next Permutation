@@ -1,0 +1,67 @@
+Algoritm (With Intuition) :
+1 -> Start traversing the array from end while(a[i]<=a[i+1])
+    INTUITION -> Since in order to find the next dictionary ordering, 
+    we only need to find an index X we want to change the rest is already ordered and can't be changed further. 
+    eg. P=[2,8,3,5,4,1].....Here you have to change X=3 to obtain next permutation(from 3->5 already in the greatest permutation)
+    
+2 -> Search for the smallest greater element from X+1->N.
+    INTUITION -> We can replace P[X] with any element > P[X] ,but doing this gives the 'JUST' next dictionary ordering.
+    eg.(cont..) element=P[4] since after 3 the "JUST' next permutation can only be P[4].
+    
+3 -> swap(element, P[4])
+    INTUITION -> to obtain the smallest possible (reversed)suffix.
+    P=[2,8,4,5,3,1]
+    
+4 -> reverse from X+1 -> N
+    INTUITION -> to set it to the smallest next permutation.
+    P=[2,8,4,1,3,5]
+    
+<-------------------------------------------------------CODE & COMPLEXITY-------------------------------------------------------> 
+
+TC -> O(N)
+SC -> O(1)
+
+//A lot of cleaning to be done
+
+void nextPermutation(vector<int>& nums) {
+        int n=nums.size();
+        int flag=0;
+        for(int i=n-1; i>0; --i){
+            
+            if(nums[i]>nums[i-1]){
+                flag=1;
+                int temp=0;
+                bin(nums, nums[i-1], i, n-1, temp);
+                cout << nums[i-1] << " " << nums[temp] << "\n";
+                swap(nums[i-1], nums[temp]);
+                for(int i=0; i<n; ++i) cout << nums[i] << " ";
+                rev(nums, i, n);
+                break;
+            }
+            
+        }
+        
+        if(flag==0){
+            rev(nums, 0, n);
+        }
+    }
+private:
+    //Step 2
+    void bin(vector<int> &nums, int target, int low, int high, int &ans){
+        int mid=0;
+        while(low<=high){
+            mid=low + ((high-low)/2);
+            if(nums[mid]>target){
+                ans=mid;
+                low = mid+1;
+            }
+            else high=mid-1;
+        }
+    }
+    //Step 4
+    void rev(vector<int> &nums, int start, int end){
+        int n=end-start;
+        for(int i=0; i<n/2; ++i){
+            swap(nums[start+i], nums[start+n-1-i]);
+        }
+    }
