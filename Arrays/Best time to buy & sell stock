@@ -1,0 +1,46 @@
+<-------------------------------BRUTE FORCE------------------------------->
+Tc -> O(N^2)
+SC -> O(1)
+
+Take each date of buying and compare it with each later date. Store max. return;
+
+<-------------------------------OPTIMAL Solution------------------------------->
+1.)
+
+TC -> O(N)
+TC -> O(1)
+
+Algorithm: 
+iterate from start -> take the smallest cost so far -> calculate profit with follwing elements..
+Store the max profit.
+
+int max_prof(vector<int> &price, int n){
+	int curr_min=price[0], maxprof=0;
+	for(int i=0; i<n; ++i){
+		if(price[i]<curr_min) curr_min=price[i];
+		maxprof=max(maxprof, price[i]-curr_min);
+	}
+	return maxprof;
+} 
+
+2.)<--------------ITERATIVE 1-D DP---------------->
+
+TC -> O(N)
+Sc -> O(1)
+
+Algorithm :
+iterate from last.
+For price[i]
+curr_prof=price[i+1]-price[i]+curr_prof;
+if(profit<0) we set curr_profit to 0
+Store max_profit at every step.
+
+int max_prof(vector<int> &price, int n){
+	int curr_prof=0, max_prof=0;
+	for(int i=n-2; i>=0; --i){
+		curr_prof=price[i+1]-price[i]+curr_prof;
+		if(curr_prof<0) curr_prof=0;
+		oaxprof=max(maxprof, curr_prof);
+	}
+	return maxprof;
+}
