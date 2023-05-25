@@ -42,15 +42,15 @@ Dutch National Flag Algorithm :
 Take 3 variables : low , mid, high;
 low -> all nos. before nums[low] are 0
 hight -> all nos. after nums[high] are 2
-if(nums[mid]==0) swap with low, increase low and decrese mid (so that the new swapped value can be re-examined)
-else if(nums[mid]==2) swap with high, decrease high ann decrease mid)
+if(nums[mid]==0) swap with low, increase low(no need to re examine the value as it can't be 2)
+else if(nums[mid]==2) swap with high, decrease high and decrease mid)
 
 
 void sort(vector<int> &nums, int n){
 	int low =0, high=n-1;
 	for(int mid=0; mid<=high; ++mid){
 		if(nums[mid]==0){
-			swap(nums[low++], nums[mid--]);
+			swap(nums[low++], nums[mid]);
 		else if(nums[mid]==2)
 			swap(nums[high--], nums[mid--]);
 	}
